@@ -24,7 +24,6 @@ class Stack:
     def get_stack(self):
         """Returns Stack contents
         """
-
         return self.__stack
 
     def size(self):
@@ -52,5 +51,41 @@ class Stack:
     def is_empty(self):
         """Returns True if stack is empty
         """
-
         return (self.__top == 0)
+
+class LinkedList(ADT):
+    """Implements a LinkedList in Python"""
+
+    class Element:
+        def __init__(self, value):
+            self.value = value
+            self.next = None
+
+    def __init__(self, head):
+        self.__head = self.Element(head)
+
+    def append(self, value):
+        appended_node = self.Element(value)
+        if self.__head:
+            traverse = self.__head
+            while traverse.next:
+                traverse = traverse.next
+            traverse.next = appended_node
+        else:
+            self.__head = appended_node
+
+    def get_head(self):
+        """Returns head node
+        Pun unintended
+        """
+        return self.__head
+
+    def print_ll(self):
+        if self.__head:
+            traverse = self.__head
+            print(self.__head.value)
+            while traverse.next:
+                traverse = traverse.next
+                print(traverse.value)
+        else:
+            print("Empty List")
